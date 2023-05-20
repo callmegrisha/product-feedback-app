@@ -4,7 +4,7 @@ export const theme = extendTheme({
   styles: {
     global: {
       body: {
-        backgroundColor: '#f7f8fd',
+        backgroundColor: 'custom.linkWater',
       },
     },
   },
