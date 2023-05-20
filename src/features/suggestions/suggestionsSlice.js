@@ -5,7 +5,22 @@ export const getAllSuggestions = createAsyncThunk(
   async (_, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.get(
-        'https://6468b518e99f0ba0a82acf93.mockapi.io/suggestions'
+        'http://localhost:3000/productRequests'
+      );
+
+      return data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
+export const getSuggestionByCategory = createAsyncThunk(
+  '@@suggestions/getSuggestionByCategory',
+  async (category, { extra: { client }, rejectWithValue }) => {
+    try {
+      const { data } = await client.get(
+        `http://localhost:3000/productRequests?category=${category.toLowerCase()}`
       );
 
       return data;
@@ -26,6 +41,7 @@ export const suggestionsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // get all suggestions
     builder.addCase(getAllSuggestions.pending, (state) => {
       state.status = 'loading';
       state.error = null;
@@ -38,6 +54,21 @@ export const suggestionsSlice = createSlice({
       state.status = 'received';
       state.error = null;
       state.entities = action.payload;
+    });
+    // get suggestion by category
+    builder.addCase(getSuggestionByCategory.pending, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    });
+    builder.addCase(getSuggestionByCategory.rejected, (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload || action.meta.error;
+    });
+    builder.addCase(getSuggestionByCategory.fulfilled, (state, action) => {
+      state.status = 'received';
+      state.error = null;
+      state.entities = [];
+      state.entities.push(...action.payload);
     });
   },
 });

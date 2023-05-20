@@ -7,8 +7,6 @@ import { SuggestionsEmpty } from './SuggestionsEmpty';
 export const SuggestionsList = () => {
   const { status, entities, error } = useSuggestions();
 
-  if (entities.length === 0 || error) return <SuggestionsEmpty />;
-
   return (
     <List spacing={5}>
       {entities.map((suggestion) => (
@@ -22,6 +20,7 @@ export const SuggestionsList = () => {
             <SuggestionsSkeleton />
           </ListItem>
         ))}
+      {(entities.length === 0 || error) && <SuggestionsEmpty />}
     </List>
   );
 };
