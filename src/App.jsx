@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import { Section } from './components/Section';
 import { Sidebar } from './components/Sidebar';
@@ -11,6 +11,7 @@ import '@fontsource/jost/400.css';
 import '@fontsource/jost/500.css';
 import '@fontsource/jost/700.css';
 import '@fontsource/jost/800.css';
+import { Controls } from './components/Сontrols';
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
           <TagsList />
           <Roadmap />
         </Sidebar>
-        <Box>
+        <Flex direction='column' gap='24px'>
+          <Controls />
           <SuggestionsList />
-        </Box>
+        </Flex>
       </Section>
     </>
   );

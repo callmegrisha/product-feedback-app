@@ -1,9 +1,8 @@
-import { Box, Button, Flex, Icon, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import { IoIosArrowUp } from 'react-icons/io';
 import { FaComment } from 'react-icons/fa';
-import { BaseTag } from '../../UI/BaseTag';
 
-import { suggestion } from './styles';
+import { suggestion, suggestionCat } from './styles';
 
 export const Suggestion = ({
   title,
@@ -26,7 +25,9 @@ export const Suggestion = ({
           <Text custom='custom.lynch' mb={4}>
             {description}
           </Text>
-          <BaseTag text={category[0].toUpperCase() + category.substring(1)} />
+          <Tag {...suggestionCat}>
+            {category[0].toUpperCase() + category.substring(1)}
+          </Tag>
         </Box>
         <Flex alignSelf='center' align='center' ml='auto'>
           <Icon as={FaComment} mr={2} color='#cdd2ee' />

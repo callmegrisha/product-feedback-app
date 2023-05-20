@@ -1,4 +1,4 @@
-import { Flex, Image, Text } from '@chakra-ui/react';
+import { Button, Flex, Image, Text } from '@chakra-ui/react';
 import emptyIllustration from '../../../assets/suggestions/illustration-empty.svg';
 
 export const SuggestionsEmpty = () => {
@@ -21,10 +21,11 @@ export const SuggestionsEmpty = () => {
         <Text as='h1' textStyle='h1' mb={4} color='custom.eastBay'>
           There is no feedback yet.
         </Text>
-        <Text textStyle='lgBody' color='#647196'>
+        <Text textStyle='lgBody' color='#647196' mb={50}>
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </Text>
+        <Button variant='purple'>+ Add FeedBack</Button>
       </Flex>
     </Flex>
   );
