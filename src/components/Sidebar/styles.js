@@ -1,4 +1,5 @@
 export const styles = {
-  display: 'grid',
+  display: 'flex',
+  flexDirection: 'column',
   gap: '24px',
 };

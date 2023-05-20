@@ -5,22 +5,28 @@ import { BaseTag } from '../../UI/BaseTag';
 
 import { suggestion } from './styles';
 
-export const Suggestion = () => {
+export const Suggestion = ({
+  title,
+  category,
+  upvotes,
+  description,
+  comments,
+}) => {
   return (
     <Box {...suggestion}>
       <Flex>
         <Button type='button' variant='up' mr={30}>
           <Icon as={IoIosArrowUp} />
-          <Text as='span'>112</Text>
+          <Text as='span'>{upvotes}</Text>
         </Button>
         <Box>
           <Text textStyle='h3' color='custom.eastBay' mb={1}>
-            Add tags for solutions
+            {title}
           </Text>
           <Text custom='custom.lynch' mb={4}>
-            Easier to search for solutions based on a specific stack.
+            {description}
           </Text>
-          <BaseTag text='Enhancement' />
+          <BaseTag text={category[0].toUpperCase() + category.substring(1)} />
         </Box>
         <Flex alignSelf='center' align='center' ml='auto'>
           <Icon as={FaComment} mr={2} color='#cdd2ee' />
@@ -30,7 +36,7 @@ export const Suggestion = () => {
             textStyle='lgBody'
             color='custom.eastBay'
           >
-            2
+            {comments ? comments.length : <Text opacity='0.5'>0</Text>}
           </Text>
         </Flex>
       </Flex>

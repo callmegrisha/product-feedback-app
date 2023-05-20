@@ -3,7 +3,7 @@ import { styles } from './styles';
 
 export const Sidebar = ({ children }) => {
   return (
-    <Box as='sidebar' {...styles}>
+    <Box as='aside' {...styles}>
       {children}
     </Box>
   );
