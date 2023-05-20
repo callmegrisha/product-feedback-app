@@ -9,6 +9,7 @@ import '@fontsource/jost/400.css';
 import '@fontsource/jost/500.css';
 import '@fontsource/jost/700.css';
 import '@fontsource/jost/800.css';
+import { SuggestionsList } from './components/SuggestionsList/SuggestionsList';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
           <TagsList />
           <Roadmap />
         </Sidebar>
-        <Box>Hello content</Box>
+        <Box>
+          <SuggestionsList />
+        </Box>
       </Section>
     </>
   );

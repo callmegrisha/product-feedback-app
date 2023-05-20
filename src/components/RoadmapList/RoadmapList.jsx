@@ -5,7 +5,7 @@ import { listItem, quantity } from './styles';
 
 export const RoadmapList = () => {
   return (
-    <List>
+    <List spacing={2}>
       <ListItem {...listItem}>
         <Flex align='center'>
           <ListIcon as={BsFillCircleFill} mr={4} w={2} color='custom.tacao' />
