@@ -4,7 +4,7 @@ import { styles } from './styles';
 import bulb from '../../assets/suggestions/icon-suggestions.svg';
 import { useSelector } from 'react-redux';
 import { selectSuggestionsInfo } from '../../features/suggestions/suggestionsSlice';
-import { ControlsFilter } from '../ControlsFilter/ControlsFilter';
+import { ControlsSort } from '../ControlsSort';
 
 export const Controls = () => {
   const { entities } = useSelector(selectSuggestionsInfo);
@@ -17,7 +17,7 @@ export const Controls = () => {
           {entities.length || 0} Suggestions
         </Text>
       </Flex>
-      <ControlsFilter />
+      <ControlsSort />
       <Button variant='purple' ml='auto'>
         + Add FeedBack
       </Button>

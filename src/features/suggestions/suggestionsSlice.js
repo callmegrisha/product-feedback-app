@@ -33,13 +33,18 @@ export const getSuggestionByCategory = createAsyncThunk(
 const initialState = {
   status: 'idle',
   entities: [],
+  sort: 'mostUpvotes',
   error: null,
 };
 
 export const suggestionsSlice = createSlice({
   name: '@@suggestions',
   initialState,
-  reducers: {},
+  reducers: {
+    selectSortMethod: (state, action) => {
+      state.sort = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     // get all suggestions
     builder.addCase(getAllSuggestions.pending, (state) => {
@@ -72,6 +77,8 @@ export const suggestionsSlice = createSlice({
     });
   },
 });
+
+export const { selectSortMethod } = suggestionsSlice.actions;
 
 export const suggestionsReducer = suggestionsSlice.reducer;
 

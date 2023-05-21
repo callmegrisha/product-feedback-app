@@ -1,21 +1,27 @@
 import { Box, Button, List, ListItem } from '@chakra-ui/react';
 import { useState } from 'react';
+
 import { dropdown, dropdownItem } from './styles';
+import { useDispatch } from 'react-redux';
+import { selectSortMethod } from '../../features/suggestions/suggestionsSlice';
 
 const options = [
-  { id: 1, name: 'Most Upvotes' },
-  { id: 2, name: 'Least Upvotes' },
-  { id: 3, name: 'Most Comments' },
-  { id: 4, name: 'Least Comments' },
+  { id: 0, name: 'Most Upvotes', value: 'mostUpvotes' },
+  { id: 1, name: 'Least Upvotes', value: 'leastUpvotes' },
+  { id: 2, name: 'Most Comments', value: 'mostComments' },
+  { id: 3, name: 'Least Comments', value: 'leastComments' },
 ];
 
-export const ControlsFilter = () => {
+export const ControlsSort = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFilter, setSelectedFilters] = useState(null);
+  const [selectedSort, setSelectedSort] = useState(0);
+  const dispatch = useDispatch();
 
   const handleOpenDropdown = () => setIsOpen(!isOpen);
-  const handleSelectFilter = (id) => {
-    setSelectedFilters(id);
+
+  const handleSelectSort = (id, value) => {
+    setSelectedSort(id);
+    dispatch(selectSortMethod(value));
     setIsOpen(false);
   };
 
@@ -27,7 +33,7 @@ export const ControlsFilter = () => {
         onClick={handleOpenDropdown}
         maxW='none'
       >
-        Sort by : {selectedFilter}
+        Sort by : {options[selectedSort].name}
       </Button>
       {isOpen && (
         <List {...dropdown}>
@@ -37,7 +43,7 @@ export const ControlsFilter = () => {
               textStyle='lgBody'
               color='custom.lynch'
               {...dropdownItem}
-              onClick={() => handleSelectFilter(option.name)}
+              onClick={() => handleSelectSort(option.id, option.value)}
             >
               {option.name}
             </ListItem>
