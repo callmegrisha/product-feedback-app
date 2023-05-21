@@ -1,4 +1,6 @@
-import { Box, Button, List, ListItem } from '@chakra-ui/react';
+import { Box, Button, Icon, List, ListItem, Text } from '@chakra-ui/react';
+import { HiCheck } from 'react-icons/hi';
+
 import { useState } from 'react';
 
 import { dropdown, dropdownItem } from './styles';
@@ -45,7 +47,10 @@ export const ControlsSort = () => {
               {...dropdownItem}
               onClick={() => handleSelectSort(option.id, option.value)}
             >
-              {option.name}
+              <Text as='span'>{option.name}</Text>
+              {selectedSort === option.id && (
+                <Icon as={HiCheck} boxSize={5} color='custom.cornflowerBlue' />
+              )}
             </ListItem>
           ))}
         </List>
