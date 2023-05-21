@@ -1,31 +1,12 @@
 import { Box, Button, Icon, List, ListItem, Text } from '@chakra-ui/react';
 import { HiCheck } from 'react-icons/hi';
 
-import { useState } from 'react';
-
 import { dropdown, dropdownItem } from './styles';
-import { useDispatch } from 'react-redux';
-import { selectSortMethod } from '../../features/suggestions/suggestionsSlice';
-
-const options = [
-  { id: 0, name: 'Most Upvotes', value: 'mostUpvotes' },
-  { id: 1, name: 'Least Upvotes', value: 'leastUpvotes' },
-  { id: 2, name: 'Most Comments', value: 'mostComments' },
-  { id: 3, name: 'Least Comments', value: 'leastComments' },
-];
+import { useControlsSort } from './useControlsSort';
 
 export const ControlsSort = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState(0);
-  const dispatch = useDispatch();
-
-  const handleOpenDropdown = () => setIsOpen(!isOpen);
-
-  const handleSelectSort = (id, value) => {
-    setSelectedSort(id);
-    dispatch(selectSortMethod(value));
-    setIsOpen(false);
-  };
+  const [options, isOpen, selectedSort, handleOpenDropdown, handleSelectSort] =
+    useControlsSort();
 
   return (
     <Box position='relative'>
