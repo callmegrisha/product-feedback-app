@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Box, Button, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import { IoIosArrowUp } from 'react-icons/io';
 import { FaComment } from 'react-icons/fa';
@@ -13,6 +14,7 @@ import {
 } from './styles';
 
 export const Suggestion = ({
+  id,
   title,
   category,
   upvotes,
@@ -29,9 +31,11 @@ export const Suggestion = ({
           </Button>
         </Box>
         <Box {...suggestionText}>
-          <Text textStyle='h3' color='custom.eastBay' mb={1}>
-            {title}
-          </Text>
+          <Link to={`/suggestion/${id}`} aria-label={title}>
+            <Text textStyle='h3' color='custom.eastBay' mb={1}>
+              {title}
+            </Text>
+          </Link>
           <Text custom='custom.lynch' mb={4}>
             {description}
           </Text>
