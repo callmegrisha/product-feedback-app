@@ -1,5 +1,6 @@
 export const styles = {
-  display: 'flex',
-  flexDirection: 'column',
+  display: ['none', 'none', 'grid', 'flex'],
+  flexDirection: ['', '', 'row', 'column'],
+  gridTemplateColumns: ['', '', '1fr 1fr 1fr', ''],
   gap: '24px',
 };

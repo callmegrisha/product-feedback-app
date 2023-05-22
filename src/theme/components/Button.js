@@ -13,36 +13,48 @@ export const buttonTheme = {
   variants: {
     purple: {
       bgColor: '#ad1fea',
+      fontSize: ['13px', '13px', '14px', '14px'],
+      lineHeight: 1,
       _hover: {
         bgColor: '#c75af6',
       },
     },
     blue: {
       bgColor: '#4661e6',
+      fontSize: ['13px', '13px', '14px', '14px'],
+      lineHeight: 1,
       _hover: {
         bgColor: '#7c91f9',
       },
     },
     grey: {
       bgColor: '#3a4374',
+      fontSize: ['13px', '13px', '14px', '14px'],
+      lineHeight: 1,
       _hover: {
         bgColor: '#656ea3',
       },
     },
     red: {
       bgColor: '#d73737',
+      fontSize: ['13px', '13px', '14px', '14px'],
+      lineHeight: 1,
       _hover: {
         bgColor: '#e98888',
       },
     },
     goBackNoBg: {
       color: '#647196',
+      fontSize: ['13px', '13px', '14px', '14px'],
+      lineHeight: 1,
       _hover: {
         textDecoration: 'underline',
       },
     },
     goBackNoBorder: {
       bgColor: '#373f68',
+      fontSize: ['13px', '13px', '14px', '14px'],
+      lineHeight: 1,
       _hover: {
         textDecoration: 'underline',
       },

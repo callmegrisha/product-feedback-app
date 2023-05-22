@@ -1,9 +1,9 @@
 import { Box, Container } from '@chakra-ui/react';
-import { stylesSection, stylesSectionContainer } from './styles';
+import { stylesSectionContainer } from './styles';
 
-export const Section = ({ children }) => {
+export const Section = ({ children, ...props }) => {
   return (
-    <Box as='section' {...stylesSection}>
+    <Box as='section' {...props}>
       <Container maxW={1142} {...stylesSectionContainer}>
         {children}
       </Container>

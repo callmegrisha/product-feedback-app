@@ -2,7 +2,15 @@ import { Box, Button, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import { IoIosArrowUp } from 'react-icons/io';
 import { FaComment } from 'react-icons/fa';
 
-import { suggestion, suggestionCat } from './styles';
+import {
+  suggestion,
+  suggestionCat,
+  suggestionComments,
+  suggestionText,
+  suggestionWrap,
+  upvote,
+  upvoteBtn,
+} from './styles';
 
 export const Suggestion = ({
   title,
@@ -13,12 +21,14 @@ export const Suggestion = ({
 }) => {
   return (
     <Box {...suggestion}>
-      <Flex>
-        <Button type='button' variant='up' mr={30}>
-          <Icon as={IoIosArrowUp} />
-          <Text as='span'>{upvotes}</Text>
-        </Button>
-        <Box>
+      <Flex {...suggestionWrap}>
+        <Box {...upvote}>
+          <Button type='button' variant='up' {...upvoteBtn}>
+            <Icon as={IoIosArrowUp} />
+            <Text as='span'>{upvotes}</Text>
+          </Button>
+        </Box>
+        <Box {...suggestionText}>
           <Text textStyle='h3' color='custom.eastBay' mb={1}>
             {title}
           </Text>
@@ -29,7 +39,7 @@ export const Suggestion = ({
             {category[0].toUpperCase() + category.substring(1)}
           </Tag>
         </Box>
-        <Flex alignSelf='center' align='center' ml='auto'>
+        <Flex {...suggestionComments}>
           <Icon as={FaComment} mr={2} color='#cdd2ee' />
           <Text
             as='span'
