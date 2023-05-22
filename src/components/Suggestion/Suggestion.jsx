@@ -20,6 +20,7 @@ export const Suggestion = ({
   upvotes,
   description,
   comments,
+  link,
 }) => {
   return (
     <Box {...suggestion}>
@@ -31,11 +32,17 @@ export const Suggestion = ({
           </Button>
         </Box>
         <Box {...suggestionText}>
-          <Link to={`/suggestion/${id}`} aria-label={title}>
+          {link ? (
+            <Link to={`/suggestion/${id}`} aria-label={title}>
+              <Text textStyle='h3' color='custom.eastBay' mb={1}>
+                {title}
+              </Text>
+            </Link>
+          ) : (
             <Text textStyle='h3' color='custom.eastBay' mb={1}>
               {title}
             </Text>
-          </Link>
+          )}
           <Text custom='custom.lynch' mb={4}>
             {description}
           </Text>

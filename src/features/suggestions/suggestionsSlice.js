@@ -30,9 +30,25 @@ export const getSuggestionByCategory = createAsyncThunk(
   }
 );
 
+export const getOneSuggestion = createAsyncThunk(
+  '@@suggestions/getOneSuggestion',
+  async (id, { extra: { client }, rejectWithValue }) => {
+    try {
+      const { data } = await client.get(
+        `http://localhost:3000/productRequests/${id}`
+      );
+
+      return data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
 const initialState = {
   status: 'idle',
   entities: [],
+  currentSuggestion: null,
   sort: 'mostUpvotes',
   error: null,
 };
@@ -75,6 +91,20 @@ export const suggestionsSlice = createSlice({
       state.entities = [];
       state.entities.push(...action.payload);
     });
+    // get one suggestion
+    builder.addCase(getOneSuggestion.pending, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    });
+    builder.addCase(getOneSuggestion.rejected, (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload || action.meta.error;
+    });
+    builder.addCase(getOneSuggestion.fulfilled, (state, action) => {
+      state.status = 'received';
+      state.error = null;
+      state.currentSuggestion = action.payload;
+    });
   },
 });
 
@@ -84,3 +114,5 @@ export const suggestionsReducer = suggestionsSlice.reducer;
 
 // selectors
 export const selectSuggestionsInfo = (state) => state.suggestions;
+export const selectCurrentSuggestion = (state) =>
+  state.suggestions.currentSuggestion;

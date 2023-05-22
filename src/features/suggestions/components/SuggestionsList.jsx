@@ -11,7 +11,7 @@ export const SuggestionsList = () => {
     <List spacing={5}>
       {sortedEntities.map((suggestion) => (
         <ListItem key={suggestion.id}>
-          <Suggestion {...suggestion} />
+          <Suggestion {...suggestion} link />
         </ListItem>
       ))}
       {status &&
