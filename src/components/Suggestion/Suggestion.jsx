@@ -21,9 +21,10 @@ export const Suggestion = ({
   description,
   comments,
   link,
+  ...props
 }) => {
   return (
-    <Box {...suggestion}>
+    <Box {...suggestion} {...props}>
       <Flex {...suggestionWrap}>
         <Box {...upvote}>
           <Button type='button' variant='up' {...upvoteBtn}>
