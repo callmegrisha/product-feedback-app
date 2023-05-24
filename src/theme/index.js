@@ -9,6 +9,20 @@ export const theme = extendTheme({
       body: {
         backgroundColor: 'custom.linkWater',
       },
+      '.replies': {
+        marginLeft: '20px',
+        paddingLeft: '24px',
+        position: 'relative',
+        _before: {
+          content: '""',
+          position: 'absolute',
+          top: '-70px',
+          left: 0,
+          width: '1px',
+          height: '100%',
+          backgroundColor: 'rgba(100, 113, 150, 0.1)',
+        },
+      },
     },
   },
   fonts: {

@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Flex,
   Icon,
@@ -13,23 +11,14 @@ import {
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { Suggestion } from '../../components/Suggestion';
-import {
-  getOneSuggestion,
-  selectCurrentSuggestion,
-} from '../../features/suggestions/suggestionsSlice';
+import { Comments } from '../../components/Comments';
+import { useOneSuggestion } from '../../features/suggestions/hooks/useOneSuggestion';
 
 import { editFeedback } from './styles';
-import { Comments } from '../../components/Comments';
 
 const Suggestionpage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const currentSuggestion = useSelector(selectCurrentSuggestion);
-  const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(getOneSuggestion(id));
-  }, [dispatch, id]);
+  const { currentSuggestion } = useOneSuggestion();
 
   if (!currentSuggestion) return <h1>Loading...</h1>;
 
