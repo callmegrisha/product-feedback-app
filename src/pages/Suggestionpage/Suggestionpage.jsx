@@ -15,6 +15,7 @@ import { Comments } from '../../components/Comments';
 import { useOneSuggestion } from '../../features/suggestions/hooks/useOneSuggestion';
 
 import { editFeedback } from './styles';
+import { CommentForm } from '../../components/CommentForm/CommentForm';
 
 const Suggestionpage = () => {
   const navigate = useNavigate();
@@ -43,7 +44,8 @@ const Suggestionpage = () => {
           </ChakraLink>
         </Flex>
         <Suggestion {...currentSuggestion} mb={6} />
-        <Comments />
+        <Comments mb={6} />
+        <CommentForm currentSuggestion={currentSuggestion} />
       </Container>
     </Box>
   );

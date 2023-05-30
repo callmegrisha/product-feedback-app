@@ -6,11 +6,11 @@ import { selectCurrentSuggestion } from '../../features/suggestions/suggestionsS
 
 import { commentsBlock } from './styles';
 
-export const Comments = () => {
+export const Comments = ({ ...props }) => {
   const { comments } = useSelector(selectCurrentSuggestion);
 
   return (
-    <Box {...commentsBlock}>
+    <Box {...commentsBlock} {...props}>
       <Text
         as='span'
         textStyle='h3'

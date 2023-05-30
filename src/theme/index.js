@@ -2,6 +2,7 @@ import { extendTheme } from '@chakra-ui/react';
 
 import { buttonTheme } from './components/Button';
 import { selectTheme } from './components/Select';
+import { textareaTheme } from './components/Textarea';
 
 export const theme = extendTheme({
   styles: {
@@ -22,6 +23,12 @@ export const theme = extendTheme({
           height: '100%',
           backgroundColor: 'rgba(100, 113, 150, 0.1)',
         },
+      },
+      '.reply-btn': {
+        fontWeight: '600',
+        textStyle: 'smBody',
+        color: 'custom.royalBlue',
+        _hover: { textDecoration: 'underline' },
       },
     },
   },
@@ -86,5 +93,6 @@ export const theme = extendTheme({
   components: {
     Button: buttonTheme,
     Select: selectTheme,
+    Textarea: textareaTheme,
   },
 });

@@ -1,6 +1,9 @@
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
+import { selectCurrentProfile } from '../../features/profile/profileSlice';
 
 export const Comment = ({ comment, isReply }) => {
+  const currentProfile = useSelector(selectCurrentProfile);
   return (
     <>
       <Flex justify='space-between' w='100%'>
@@ -28,18 +31,21 @@ export const Comment = ({ comment, isReply }) => {
                 @{comment.user.username}
               </Text>
             </Flex>
-            <Button
-              __css={{}}
-              type='button'
-              textStyle='smBody'
-              fontWeight='600'
-              color='custom.royalBlue'
-              _hover={{
-                textDecoration: 'underline',
-              }}
-            >
-              Reply
-            </Button>
+            <Flex gap='10px'>
+              <Button __css={{}} className='reply-btn' type='button'>
+                Reply
+              </Button>
+              {currentProfile.username === comment.user.username && (
+                <>
+                  <Button __css={{}} className='reply-btn' type='button'>
+                    Edit
+                  </Button>
+                  <Button __css={{}} className='reply-btn' type='button'>
+                    Delete
+                  </Button>
+                </>
+              )}
+            </Flex>
           </Flex>
           <Text textStyle='mdBody' color='custom.lynch'>
             {comment.content}
