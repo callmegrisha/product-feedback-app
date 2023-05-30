@@ -1,9 +1,31 @@
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentProfile } from '../../features/profile/profileSlice';
+import {
+  selectCurrentSuggestion,
+  updateSuggestion,
+} from '../../features/suggestions/suggestionsSlice';
 
 export const Comment = ({ comment, isReply }) => {
+  const dispatch = useDispatch();
   const currentProfile = useSelector(selectCurrentProfile);
+  const currentSuggestion = useSelector(selectCurrentSuggestion);
+
+  const handleDeleteComment = (commentId) => {
+    const { id, comments } = currentSuggestion;
+    const filteredComments = comments.filter(
+      (comment) => comment.id !== commentId
+    );
+
+    const suggestionObj = {
+      comments: filteredComments,
+    };
+
+    if (window.confirm('Are you sure you want to delete the comment?')) {
+      dispatch(updateSuggestion({ id, suggestionObj }));
+    }
+  };
+
   return (
     <>
       <Flex justify='space-between' w='100%'>
@@ -40,7 +62,12 @@ export const Comment = ({ comment, isReply }) => {
                   <Button __css={{}} className='reply-btn' type='button'>
                     Edit
                   </Button>
-                  <Button __css={{}} className='reply-btn' type='button'>
+                  <Button
+                    __css={{}}
+                    className='reply-btn'
+                    type='button'
+                    onClick={() => handleDeleteComment(comment.id)}
+                  >
                     Delete
                   </Button>
                 </>

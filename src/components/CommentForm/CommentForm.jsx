@@ -1,17 +1,19 @@
+import { useEffect, useRef, useState } from 'react';
 import { useFormik } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, Button, Flex, Text, Textarea } from '@chakra-ui/react';
 
-import { formWrap } from './styles';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   getCurrentProfile,
   selectCurrentProfile,
 } from '../../features/profile/profileSlice';
 import { updateSuggestion } from '../../features/suggestions/suggestionsSlice';
+import { formWrap } from './styles';
 
 export const CommentForm = ({ currentSuggestion }) => {
   const dispatch = useDispatch();
+  const textarea = useRef();
+  const [limit, setLimit] = useState(0);
   const currentProfile = useSelector(selectCurrentProfile);
 
   const formik = useFormik({
@@ -56,6 +58,14 @@ export const CommentForm = ({ currentSuggestion }) => {
     },
   });
 
+  const handleTextarea = (e) => {
+    const comment = e.target.value;
+    const length = comment.length;
+
+    formik.setFieldValue('comment', comment);
+    setLimit(length);
+  };
+
   useEffect(() => {
     dispatch(getCurrentProfile());
   }, [dispatch]);
@@ -67,16 +77,17 @@ export const CommentForm = ({ currentSuggestion }) => {
       </Text>
       <form onSubmit={formik.handleSubmit}>
         <Textarea
+          ref={textarea}
           variant='purple'
           name='comment'
-          onChange={formik.handleChange}
+          onChange={(e) => handleTextarea(e)}
           value={formik.values.comment}
           maxLength={225}
           mb={4}
         />
         <Flex justify='space-between' align='center'>
           <Text as='span' textStyle='mdBody' color='custom.lynch'>
-            225 characters left
+            {225 - limit} characters left
           </Text>
           <Button type='submit' variant='purple'>
             Post Comment
