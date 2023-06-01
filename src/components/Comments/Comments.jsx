@@ -1,26 +1,15 @@
 import { useSelector } from 'react-redux';
-import { Box, Text } from '@chakra-ui/react';
 
 import { CommentsList } from '../CommentsList';
+import { BlockWrapper } from '../../UI/BlockWrapper/BlockWrapper';
 import { selectCurrentSuggestion } from '../../features/suggestions/suggestionsSlice';
-
-import { commentsBlock } from './styles';
 
 export const Comments = ({ ...props }) => {
   const { comments } = useSelector(selectCurrentSuggestion);
-
+  const title = `${comments ? comments.length : 0} Comments`;
   return (
-    <Box {...commentsBlock} {...props}>
-      <Text
-        as='span'
-        textStyle='h3'
-        color='custom.eastBay'
-        display='block'
-        mb={7}
-      >
-        {comments ? comments.length : '0'} Comments
-      </Text>
+    <BlockWrapper title={title} {...props}>
       <CommentsList comments={comments} />
-    </Box>
+    </BlockWrapper>
   );
 };

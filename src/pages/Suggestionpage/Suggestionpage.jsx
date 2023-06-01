@@ -15,7 +15,7 @@ import { Comments } from '../../components/Comments';
 import { useOneSuggestion } from '../../features/suggestions/hooks/useOneSuggestion';
 
 import { editFeedback } from './styles';
-import { CommentForm } from '../../components/CommentForm/CommentForm';
+import { CommentBlock } from '../../components/CommentBlock';
 
 const Suggestionpage = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Suggestionpage = () => {
         </Flex>
         <Suggestion {...currentSuggestion} mb={6} />
         <Comments mb={6} />
-        <CommentForm currentSuggestion={currentSuggestion} />
+        <CommentBlock currentSuggestion={currentSuggestion} />
       </Container>
     </Box>
   );

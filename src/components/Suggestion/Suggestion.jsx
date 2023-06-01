@@ -3,8 +3,8 @@ import { Box, Button, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import { IoIosArrowUp } from 'react-icons/io';
 import { FaComment } from 'react-icons/fa';
 
+import { BlockWrapper } from '../../UI/BlockWrapper/BlockWrapper';
 import {
-  suggestion,
   suggestionCat,
   suggestionComments,
   suggestionText,
@@ -24,7 +24,7 @@ export const Suggestion = ({
   ...props
 }) => {
   return (
-    <Box {...suggestion} {...props}>
+    <BlockWrapper {...props}>
       <Flex {...suggestionWrap}>
         <Box {...upvote}>
           <Button type='button' variant='up' {...upvoteBtn}>
@@ -63,6 +63,6 @@ export const Suggestion = ({
           </Text>
         </Flex>
       </Flex>
-    </Box>
+    </BlockWrapper>
   );
 };

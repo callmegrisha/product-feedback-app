@@ -1,28 +1,30 @@
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentProfile } from '../../features/profile/profileSlice';
-import {
-  selectCurrentSuggestion,
-  updateSuggestion,
-} from '../../features/suggestions/suggestionsSlice';
+import { useEditComment } from './useEditComment';
+import { CommentForm } from '../CommentForm/CommentForm';
+import { useDeleteComment } from './useDeleteComment';
 
 export const Comment = ({ comment, isReply }) => {
-  const dispatch = useDispatch();
-  const currentProfile = useSelector(selectCurrentProfile);
-  const currentSuggestion = useSelector(selectCurrentSuggestion);
+  const [currentProfile, handleDeleteComment] = useDeleteComment();
+  const [limit, setOpenEditor, openEditor, formik, handleTextArea] =
+    useEditComment(comment);
 
-  const handleDeleteComment = (commentId) => {
-    const { id, comments } = currentSuggestion;
-    const filteredComments = comments.filter(
-      (comment) => comment.id !== commentId
-    );
-
-    const suggestionObj = {
-      comments: filteredComments,
-    };
-
-    if (window.confirm('Are you sure you want to delete the comment?')) {
-      dispatch(updateSuggestion({ id, suggestionObj }));
+  const toggleEditComment = () => {
+    if (openEditor) {
+      return (
+        <CommentForm
+          isEdit
+          limit={limit}
+          formik={formik}
+          handleTextarea={handleTextArea}
+          submitBtnText='Save'
+        />
+      );
+    } else {
+      return (
+        <Text textStyle='mdBody' color='custom.lynch'>
+          {comment.content}
+        </Text>
+      );
     }
   };
 
@@ -59,7 +61,12 @@ export const Comment = ({ comment, isReply }) => {
               </Button>
               {currentProfile.username === comment.user.username && (
                 <>
-                  <Button __css={{}} className='reply-btn' type='button'>
+                  <Button
+                    __css={{}}
+                    className='reply-btn'
+                    type='button'
+                    onClick={() => setOpenEditor(!openEditor)}
+                  >
                     Edit
                   </Button>
                   <Button
@@ -74,9 +81,7 @@ export const Comment = ({ comment, isReply }) => {
               )}
             </Flex>
           </Flex>
-          <Text textStyle='mdBody' color='custom.lynch'>
-            {comment.content}
-          </Text>
+          {toggleEditComment()}
         </Box>
       </Flex>
       {comment.replies && (

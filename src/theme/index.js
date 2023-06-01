@@ -30,6 +30,11 @@ export const theme = extendTheme({
         color: 'custom.royalBlue',
         _hover: { textDecoration: 'underline' },
       },
+      '.block-wrapper': {
+        backgroundColor: 'white',
+        borderRadius: '10px',
+        padding: '28px 32px',
+      },
     },
   },
   fonts: {

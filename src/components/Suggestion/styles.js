@@ -1,9 +1,3 @@
-export const suggestion = {
-  padding: '28px 32px',
-  backgroundColor: 'white',
-  borderRadius: '10px',
-};
-
 export const suggestionWrap = {
   flexDirection: 'row',
   flexWrap: ['wrap', 'wrap', 'nowrap', 'nowrap'],
