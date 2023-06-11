@@ -7,6 +7,7 @@ import {
   Box,
   Container,
   Button,
+  Heading,
 } from '@chakra-ui/react';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
@@ -21,7 +22,7 @@ const Suggestionpage = () => {
   const navigate = useNavigate();
   const { currentSuggestion } = useOneSuggestion();
 
-  if (!currentSuggestion) return <h1>Loading...</h1>;
+  if (!currentSuggestion) return <Heading as='h1'>Loading...</Heading>;
 
   return (
     <Box as='section' p='80px 0 129px'>

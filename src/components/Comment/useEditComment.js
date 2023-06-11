@@ -18,6 +18,7 @@ export const useEditComment = (comment) => {
       commentContent: comment.content,
     },
     onSubmit: (values, { resetForm }) => {
+      console.log('edit form', values);
       const { id, comments } = currentSuggestion;
       const { commentContent } = values;
 

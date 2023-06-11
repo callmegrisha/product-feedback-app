@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
+
+import { CommentReplyForm } from '../CommentReplyForm';
+import { CommentForm } from '../CommentForm';
 import { useEditComment } from './useEditComment';
-import { CommentForm } from '../CommentForm/CommentForm';
 import { useDeleteComment } from './useDeleteComment';
 
 export const Comment = ({ comment, isReply }) => {
   const [currentProfile, handleDeleteComment] = useDeleteComment();
   const [limit, setOpenEditor, openEditor, formik, handleTextArea] =
     useEditComment(comment);
+  const [replyFormVisibility, setReplyFormVisibility] = useState(false);
 
   const toggleEditComment = () => {
     if (openEditor) {
@@ -22,12 +26,21 @@ export const Comment = ({ comment, isReply }) => {
     } else {
       return (
         <Text textStyle='mdBody' color='custom.lynch'>
-          {comment.content}
+          {isReply ? (
+            <>
+              <Text as='span' fontWeight='700' color='custom.cornflowerBlue'>
+                @{comment.replyingTo}
+              </Text>
+              &nbsp;
+              {comment.content}
+            </>
+          ) : (
+            comment.content
+          )}
         </Text>
       );
     }
   };
-
   return (
     <>
       <Flex justify='space-between' w='100%'>
@@ -56,7 +69,12 @@ export const Comment = ({ comment, isReply }) => {
               </Text>
             </Flex>
             <Flex gap='10px'>
-              <Button __css={{}} className='reply-btn' type='button'>
+              <Button
+                __css={{}}
+                className='reply-btn'
+                type='button'
+                onClick={() => setReplyFormVisibility(!replyFormVisibility)}
+              >
                 Reply
               </Button>
               {currentProfile.username === comment.user.username && (
@@ -84,6 +102,12 @@ export const Comment = ({ comment, isReply }) => {
           {toggleEditComment()}
         </Box>
       </Flex>
+      {replyFormVisibility && (
+        <CommentReplyForm
+          comment={comment}
+          setReplyForm={setReplyFormVisibility}
+        />
+      )}
       {comment.replies && (
         <Box className='replies'>
           {comment.replies.map((reply, index) => (

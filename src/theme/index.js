@@ -14,10 +14,12 @@ export const theme = extendTheme({
         marginLeft: '20px',
         paddingLeft: '24px',
         position: 'relative',
+        display: 'grid',
+        gap: '32px',
         _before: {
           content: '""',
           position: 'absolute',
-          top: '-70px',
+          top: 0,
           left: 0,
           width: '1px',
           height: '100%',

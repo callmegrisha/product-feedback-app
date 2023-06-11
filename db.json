@@ -208,7 +208,45 @@
             "image": "/assets/user-images/image-zena.jpg",
             "name": "Zena Kelley",
             "username": "velvetround"
-          }
+          },
+          "replies": [
+            {
+              "content": "Reply.",
+              "replyingTo": "velvetround",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround"
+              }
+            },
+            {
+              "content": "dddd",
+              "replyingTo": "velvetround",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround"
+              }
+            },
+            {
+              "content": "sdf",
+              "replyingTo": "velvetround",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround"
+              }
+            },
+            {
+              "content": "Это исключительно тестовый комментарий",
+              "replyingTo": "velvetround",
+              "user": {
+                "image": "/assets/user-images/image-zena.jpg",
+                "name": "Zena Kelley",
+                "username": "velvetround"
+              }
+            }
+          ]
         }
       ]
     },

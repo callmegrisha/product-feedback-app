@@ -1,6 +1,6 @@
 import { BlockWrapper } from '../../UI/BlockWrapper/BlockWrapper';
 import { useCreateComment } from './useCreateComment';
-import { CommentForm } from '../CommentForm/CommentForm';
+import { CommentForm } from '../CommentForm';
 
 export const CommentBlock = ({ currentSuggestion }) => {
   const [formik, handleTextarea, limit] = useCreateComment(currentSuggestion);
