@@ -43,6 +43,7 @@ export const Comment = ({ comment, isReply }) => {
       );
     }
   };
+
   return (
     <>
       <Flex justify='space-between' w='100%'>

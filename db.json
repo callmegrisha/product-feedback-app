@@ -173,7 +173,8 @@
       "category": "bug",
       "upvotes": 3,
       "status": "suggestion",
-      "description": "Challenge preview images are missing when you apply a filter."
+      "description": "Challenge preview images are missing when you apply a filter.",
+      "comments": []
     },
     {
       "id": 7,
@@ -190,7 +191,8 @@
             "image": "/assets/user-images/image-victoria.jpg",
             "name": "Victoria Mejia",
             "username": "arlen_the_marlin"
-          }
+          },
+          "replies": []
         },
         {
           "id": 11,
@@ -200,17 +202,7 @@
             "name": "Jackson Barker",
             "username": "countryspirit"
           },
-          "replies": [
-            {
-              "content": "Hello!",
-              "replyingTo": "countryspirit",
-              "user": {
-                "image": "/assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround"
-              }
-            }
-          ]
+          "replies": []
         }
       ]
     },
