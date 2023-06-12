@@ -88,8 +88,8 @@ export const theme = extendTheme({
     },
     mdBody: {
       fontWeight: 400,
-      fontSize: '15px',
-      lineHeight: '22px',
+      fontSize: ['13px', '13px', '15px', '15px'],
+      lineHeight: ['19px', '19px', '22px', '22px'],
     },
     smBody: {
       fontWeight: 800,

@@ -2,7 +2,7 @@ export const buttonTheme = {
   baseStyle: {
     padding: '12px',
     width: '100%',
-    maxWidth: '158px',
+    maxWidth: ['119px', '119px', '158px', '158px'],
     fontWeight: 700,
     fontSize: '14px',
     lineHeight: '20px',

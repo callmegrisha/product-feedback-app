@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
+import { BsFillReplyFill } from 'react-icons/bs';
+import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 
 import { CommentReplyForm } from '../CommentReplyForm';
 import { CommentForm } from '../CommentForm';
@@ -44,11 +46,23 @@ export const Comment = ({ comment, isReply }) => {
   return (
     <>
       <Flex justify='space-between' w='100%'>
-        <Box mr={8}>
+        <Box mr={8} display={['none', 'none', 'block', 'block']}>
           <Avatar name={comment.user.name} src={comment.user.image} />
         </Box>
         <Box w='100%'>
-          <Flex align='flex-start' justify='space-between' mb={4}>
+          <Flex
+            align='flex-start'
+            justify={[
+              'flex-start',
+              'flex-start',
+              'space-between',
+              'space-between',
+            ]}
+            mb={4}
+          >
+            <Box mr={4} display={['block', 'block', 'none', 'none']}>
+              <Avatar name={comment.user.name} src={comment.user.image} />
+            </Box>
             <Flex direction='column'>
               <Text
                 as='span'
@@ -68,14 +82,14 @@ export const Comment = ({ comment, isReply }) => {
                 @{comment.user.username}
               </Text>
             </Flex>
-            <Flex gap='10px'>
+            <Flex gap='10px' ml={['auto', 'auto', 0, 0]}>
               <Button
                 __css={{}}
                 className='reply-btn'
                 type='button'
                 onClick={() => setReplyFormVisibility(!replyFormVisibility)}
               >
-                Reply
+                <BsFillReplyFill size={20} />
               </Button>
               {currentProfile.username === comment.user.username && (
                 <>
@@ -85,7 +99,7 @@ export const Comment = ({ comment, isReply }) => {
                     type='button'
                     onClick={() => setOpenEditor(!openEditor)}
                   >
-                    Edit
+                    <AiFillEdit size={20} />
                   </Button>
                   <Button
                     __css={{}}
@@ -93,7 +107,7 @@ export const Comment = ({ comment, isReply }) => {
                     type='button'
                     onClick={() => handleDeleteComment(comment.id)}
                   >
-                    Delete
+                    <AiFillDelete size={20} />
                   </Button>
                 </>
               )}

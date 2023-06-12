@@ -200,20 +200,10 @@
             "name": "Jackson Barker",
             "username": "countryspirit"
           },
-          "replies": []
-        },
-        {
-          "content": "Hello world!",
-          "id": 1685474981455,
-          "user": {
-            "image": "/assets/user-images/image-zena.jpg",
-            "name": "Zena Kelley",
-            "username": "velvetround"
-          },
           "replies": [
             {
-              "content": "Hello.",
-              "replyingTo": "velvetround",
+              "content": "Hello!",
+              "replyingTo": "countryspirit",
               "user": {
                 "image": "/assets/user-images/image-zena.jpg",
                 "name": "Zena Kelley",
