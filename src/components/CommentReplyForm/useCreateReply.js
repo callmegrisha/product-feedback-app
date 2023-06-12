@@ -61,7 +61,7 @@ export const useCreateReply = (comment, setReplyFormVisibility) => {
       }
 
       // если мы отвечаем на реплай к комментарию
-      if ('replyingTo' in comment) {
+      if (comment.replyingTo) {
         // прохожусь циклом по массиву комментариев
         changedComments = comments.map((el) => {
           // если в объекте комментария уже есть массив replies

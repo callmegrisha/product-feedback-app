@@ -7,7 +7,7 @@ import { useEditComment } from './useEditComment';
 import { useDeleteComment } from './useDeleteComment';
 
 export const Comment = ({ comment, isReply }) => {
-  const [currentProfile, handleDeleteComment] = useDeleteComment();
+  const [currentProfile, handleDeleteComment] = useDeleteComment(comment);
   const [limit, setOpenEditor, openEditor, formik, handleTextArea] =
     useEditComment(comment);
   const [replyFormVisibility, setReplyFormVisibility] = useState(false);

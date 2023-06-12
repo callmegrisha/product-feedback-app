@@ -199,10 +199,11 @@
             "image": "/assets/user-images/image-jackson.jpg",
             "name": "Jackson Barker",
             "username": "countryspirit"
-          }
+          },
+          "replies": []
         },
         {
-          "content": "Hello world...",
+          "content": "Hello world!",
           "id": 1685474981455,
           "user": {
             "image": "/assets/user-images/image-zena.jpg",
@@ -211,34 +212,7 @@
           },
           "replies": [
             {
-              "content": "Reply.",
-              "replyingTo": "velvetround",
-              "user": {
-                "image": "/assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround"
-              }
-            },
-            {
-              "content": "dddd",
-              "replyingTo": "velvetround",
-              "user": {
-                "image": "/assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround"
-              }
-            },
-            {
-              "content": "sdf",
-              "replyingTo": "velvetround",
-              "user": {
-                "image": "/assets/user-images/image-zena.jpg",
-                "name": "Zena Kelley",
-                "username": "velvetround"
-              }
-            },
-            {
-              "content": "Это исключительно тестовый комментарий",
+              "content": "Hello.",
               "replyingTo": "velvetround",
               "user": {
                 "image": "/assets/user-images/image-zena.jpg",

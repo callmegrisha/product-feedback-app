@@ -5,7 +5,7 @@ import {
   updateSuggestion,
 } from '../../features/suggestions/suggestionsSlice';
 
-export const useDeleteComment = () => {
+export const useDeleteComment = (currentComment) => {
   const dispatch = useDispatch();
   const currentProfile = useSelector(selectCurrentProfile);
   const currentSuggestion = useSelector(selectCurrentSuggestion);
@@ -13,11 +13,32 @@ export const useDeleteComment = () => {
   const handleDeleteComment = (commentId) => {
     // забираю айди и комментарии из текущего suggestion
     const { id, comments } = currentSuggestion;
+    let filteredComments = [];
 
-    // фильтрую оставляя все комментарии, айди которых не равны текущему
-    const filteredComments = comments.filter(
-      (comment) => comment.id !== commentId
-    );
+    // если нужно удалить реплай
+    if (currentComment.replyingTo) {
+      // прохожусь в цикле по массиву комментариев
+      filteredComments = comments.map((el) => {
+        // если в объекте комментария уже есть массив replies
+        // и в нем есть необходимый нам комментарий, на который мы отвечаем
+        if (el.replies && el.replies.includes(currentComment)) {
+          return {
+            ...el,
+            replies: el.replies.filter(
+              (reply) => reply.content !== currentComment.content
+            ),
+          };
+        }
+
+        return el;
+      });
+    }
+
+    // если это не реплай
+    if (!currentComment.replyingTo) {
+      // фильтрую оставляя все комментарии, айди которых не равны текущему
+      filteredComments = comments.filter((comment) => comment.id !== commentId);
+    }
 
     // создаю объект для передачи в thunk
     const suggestionObj = {
