@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button, Flex, Image, Text } from '@chakra-ui/react';
 import { styles, quantity } from './styles';
 
@@ -18,7 +19,7 @@ export const Controls = ({ ...props }) => {
         </Text>
       </Flex>
       <ControlsSort />
-      <Button variant='purple' ml='auto'>
+      <Button as={Link} to='/suggestion/new' variant='purple' ml='auto'>
         + Add FeedBack
       </Button>
     </Flex>

@@ -28,4 +28,24 @@ const filter = definePartsStyle({
   },
 });
 
-export const selectTheme = defineMultiStyleConfig({ variants: { filter } });
+const purple = definePartsStyle({
+  field: {
+    fontSize: '15px',
+    lineHeight: '22px',
+    color: 'custom.eastBay',
+    border: 'none',
+    backgroundColor: 'custom.linkWater',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    _focus: {
+      border: '1px solid custom.royalBlue',
+    },
+  },
+  icon: {
+    fill: 'custom.royalBlue',
+  },
+});
+
+export const selectTheme = defineMultiStyleConfig({
+  variants: { filter, purple },
+});

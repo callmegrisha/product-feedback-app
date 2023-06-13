@@ -45,6 +45,22 @@ export const getOneSuggestion = createAsyncThunk(
   }
 );
 
+export const createSuggestion = createAsyncThunk(
+  '@@suggestions/createSuggestion',
+  async (suggestionObj, { extra: { client }, rejectWithValue }) => {
+    try {
+      const { data } = await client.post(
+        'http://localhost:3000/productRequests',
+        suggestionObj
+      );
+
+      return data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
 export const updateSuggestion = createAsyncThunk(
   '@@suggestions/updateSuggestion',
   async ({ id, suggestionObj }, { extra: { client }, rejectWithValue }) => {
@@ -120,6 +136,21 @@ export const suggestionsSlice = createSlice({
       state.status = 'received';
       state.error = null;
       state.currentSuggestion = action.payload;
+    });
+    // create suggestion
+    builder.addCase(createSuggestion.pending, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    });
+    builder.addCase(createSuggestion.rejected, (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload || action.meta.error;
+    });
+    builder.addCase(createSuggestion.fulfilled, (state, action) => {
+      state.status = 'received';
+      state.error = null;
+      const { payload } = action;
+      state.entities.push(payload);
     });
     // update suggestion
     builder.addCase(updateSuggestion.pending, (state) => {

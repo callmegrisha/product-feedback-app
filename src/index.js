@@ -8,6 +8,11 @@ import { store } from './features/store';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
+import '@fontsource/jost/400.css';
+import '@fontsource/jost/500.css';
+import '@fontsource/jost/700.css';
+import '@fontsource/jost/800.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(

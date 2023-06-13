@@ -3,6 +3,7 @@ import { extendTheme } from '@chakra-ui/react';
 import { buttonTheme } from './components/Button';
 import { selectTheme } from './components/Select';
 import { textareaTheme } from './components/Textarea';
+import { inputTheme } from './components/Input';
 
 export const theme = extendTheme({
   styles: {
@@ -36,6 +37,21 @@ export const theme = extendTheme({
         backgroundColor: 'white',
         borderRadius: '10px',
         padding: '28px 32px',
+      },
+      '.label, .label-description': {
+        fontSize: '14px',
+        lineHeight: '20px',
+      },
+      '.label': {
+        fontWeight: 700,
+        letterSpacing: '-0.2px',
+        color: 'custom.eastBay !important',
+        margin: '0 0 2px 0 !important',
+      },
+      '.label-description': {
+        fontWeight: 400,
+        color: 'custom.lynch !important',
+        margin: '0 0 16px 0 !important',
       },
     },
   },
@@ -101,5 +117,6 @@ export const theme = extendTheme({
     Button: buttonTheme,
     Select: selectTheme,
     Textarea: textareaTheme,
+    Input: inputTheme,
   },
 });

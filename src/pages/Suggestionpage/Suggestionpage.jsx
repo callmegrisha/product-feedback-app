@@ -18,7 +18,7 @@ import { useOneSuggestion } from '../../features/suggestions/hooks/useOneSuggest
 import { editFeedback } from './styles';
 import { CommentBlock } from '../../components/CommentBlock';
 
-const Suggestionpage = () => {
+const SuggestionPage = () => {
   const navigate = useNavigate();
   const { currentSuggestion } = useOneSuggestion();
 
@@ -40,7 +40,12 @@ const Suggestionpage = () => {
               Go Back
             </Text>
           </Button>
-          <ChakraLink as={Link} textStyle='h4' to='/' {...editFeedback}>
+          <ChakraLink
+            as={Link}
+            textStyle='h4'
+            to={`/suggestion/${currentSuggestion.id}/edit`}
+            {...editFeedback}
+          >
             Edit Feedback
           </ChakraLink>
         </Flex>
@@ -52,4 +57,4 @@ const Suggestionpage = () => {
   );
 };
 
-export default Suggestionpage;
+export default SuggestionPage;

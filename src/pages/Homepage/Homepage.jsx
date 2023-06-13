@@ -8,7 +8,7 @@ import { Roadmap } from '../../components/Roadmap';
 import { Controls } from '../../components/Сontrols';
 import { SuggestionsList } from '../../features/suggestions/components/SuggestionsList';
 
-const Homepage = () => {
+const HomePage = () => {
   return (
     <>
       <Info display={['flex', 'flex', 'none', 'none']} />
@@ -28,4 +28,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;

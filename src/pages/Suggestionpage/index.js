@@ -1,2 +1,2 @@
-import Suggestionpage from './Suggestionpage';
-export default Suggestionpage;
+import SuggestionPage from './SuggestionPage';
+export default SuggestionPage;
