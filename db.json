@@ -177,36 +177,6 @@
       "comments": []
     },
     {
-      "id": 7,
-      "title": "More comprehensive reports ",
-      "category": "enhancement",
-      "upvotes": 123,
-      "status": "planned",
-      "description": "It would be great to see a more detailed breakdown of solutions.",
-      "comments": [
-        {
-          "id": 10,
-          "content": "This would be awesome! It would be so helpful to see an overview of my code in a way that makes it easy to spot where things could be improved.",
-          "user": {
-            "image": "/assets/user-images/image-victoria.jpg",
-            "name": "Victoria Mejia",
-            "username": "arlen_the_marlin"
-          },
-          "replies": []
-        },
-        {
-          "id": 11,
-          "content": "Yeah, this would be really good. I'd love to see deeper insights into my code!",
-          "user": {
-            "image": "/assets/user-images/image-jackson.jpg",
-            "name": "Jackson Barker",
-            "username": "countryspirit"
-          },
-          "replies": []
-        }
-      ]
-    },
-    {
       "id": 8,
       "title": "Learning paths",
       "category": "feature",

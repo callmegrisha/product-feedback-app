@@ -77,6 +77,21 @@ export const updateSuggestion = createAsyncThunk(
   }
 );
 
+export const deleteSuggestion = createAsyncThunk(
+  '@@suggestions/deleteSuggestion',
+  async (id, { extra: { client }, rejectWithValue }) => {
+    try {
+      const { data } = await client.delete(
+        `http://localhost:3000/productRequests/${id}`
+      );
+
+      return data;
+    } catch (error) {
+      rejectWithValue(error);
+    }
+  }
+);
+
 const initialState = {
   status: 'idle',
   entities: [],
@@ -168,6 +183,20 @@ export const suggestionsSlice = createSlice({
       if (state.currentSuggestion.id === data.id) {
         state.currentSuggestion = data;
       }
+    });
+    // delete suggestion
+    builder.addCase(deleteSuggestion.pending, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    });
+    builder.addCase(deleteSuggestion.rejected, (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload || action.meta.error;
+    });
+    builder.addCase(deleteSuggestion.fulfilled, (state, action) => {
+      state.status = 'received';
+      state.error = null;
+      console.log('deleteSuggestion.fulfilled', action);
     });
   },
 });

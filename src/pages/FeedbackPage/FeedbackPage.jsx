@@ -12,7 +12,7 @@ const FeedbackPage = ({ isEdit }) => {
   const { formik: formikEdit } = useEditSuggestion();
 
   return (
-    <Box as='section' padding='92px 0' maxW={540} m='0 auto'>
+    <Box as='section' padding='92px 24px' maxW={540} m='0 auto'>
       <Button
         __css={{}}
         type='button'

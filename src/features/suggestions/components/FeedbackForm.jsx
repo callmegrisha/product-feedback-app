@@ -9,6 +9,8 @@ import {
   Textarea,
 } from '@chakra-ui/react';
 import { BlockWrapper } from '../../../UI/BlockWrapper/BlockWrapper';
+import { useDeleteSuggestion } from '../hooks/useDeleteSuggestion';
+import { Link, useParams } from 'react-router-dom';
 
 const categories = [
   { value: 'all', name: 'All' },
@@ -26,11 +28,18 @@ const statuses = [
 ];
 
 export const FeedbackForm = ({ formik, isEdit, title, submitText }) => {
+  const [handleDeleteSuggestion] = useDeleteSuggestion();
+  const { id } = useParams();
   return (
     <BlockWrapper
       title={title}
       position='relative'
-      padding='52px 42px 40px'
+      padding={[
+        '44px 24px 24px',
+        '44px 24px 24px',
+        '44px 24px 24px',
+        '52px 42px 40px',
+      ]}
       _before={{
         content: '""',
         position: 'absolute',
@@ -112,16 +121,39 @@ export const FeedbackForm = ({ formik, isEdit, title, submitText }) => {
             value={formik.values.description}
           />
         </FormControl>
-        <Flex alignItems='center' justifyContent='flex-end'>
+        <Flex
+          direction={['column', 'row', 'row', 'row']}
+          alignItems='center'
+          justifyContent={['flex-start', 'flex-end', 'flex-end', 'flex-end']}
+          gap={[4, 4, 0, 0]}
+        >
           {isEdit && (
-            <Button type='button' variant='red' maxWidth={93} mr='auto'>
+            <Button
+              type='button'
+              variant='red'
+              maxWidth={['none', 93, 93, 93]}
+              mr={[0, 'auto', 'auto', 'auto']}
+              onClick={() => handleDeleteSuggestion(id)}
+            >
               Delete
             </Button>
           )}
-          <Button type='button' variant='grey' mr={4} maxWidth={93}>
+          <Button
+            as={Link}
+            type='button'
+            variant='grey'
+            mr={[0, 0, 4, 4]}
+            maxWidth={['none', 93, 93, 93]}
+            to='/'
+          >
             Cancel
           </Button>
-          <Button type='submit' variant='purple' maxWidth={144}>
+          <Button
+            type='submit'
+            variant='purple'
+            maxWidth={['none', 144, 144, 144]}
+            order={[-1, 0, 0, 0]}
+          >
             {submitText}
           </Button>
         </Flex>
