@@ -17,7 +17,7 @@ export const useCreateSuggestion = () => {
       const feedbackObj = {
         id: Date.now(),
         upvotes: 0,
-        status: 'suggestion',
+        status: 'planned',
         ...values,
       };
 

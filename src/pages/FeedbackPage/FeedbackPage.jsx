@@ -1,19 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Heading, Icon, Text } from '@chakra-ui/react';
+import { Box, Button, Icon, Text } from '@chakra-ui/react';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 import { FeedbackForm } from '../../features/suggestions/components/FeedbackForm';
 import { useCreateSuggestion } from '../../features/suggestions/hooks/useCreateSuggestion';
-import { useOneSuggestion } from '../../features/suggestions/hooks/useOneSuggestion';
 import { useEditSuggestion } from '../../features/suggestions/hooks/useEditSuggestion';
 
 const FeedbackPage = ({ isEdit }) => {
   const navigate = useNavigate();
-  const { currentSuggestion } = useOneSuggestion();
   const { formik: formikCreate } = useCreateSuggestion();
-  const { formik: formikEdit } = useEditSuggestion(currentSuggestion);
-
-  if (!currentSuggestion) return <Heading as='h1'>Loading...</Heading>;
+  const { formik: formikEdit } = useEditSuggestion();
 
   return (
     <Box as='section' padding='92px 0' maxW={540} m='0 auto'>
@@ -30,16 +26,22 @@ const FeedbackPage = ({ isEdit }) => {
           Go Back
         </Text>
       </Button>
-      {!isEdit ? (
-        <FeedbackForm title='Create New Feedback' formik={formikCreate} />
+      {isEdit ? (
+        <FeedbackForm
+          isEdit
+          title='Edit Feedback'
+          submitText='Save Feedback'
+          formik={formikEdit}
+        />
       ) : (
         <FeedbackForm
-          title={`Edit '${currentSuggestion.title}'`}
-          isEdit
-          formik={formikEdit}
+          title='Create New Feedback'
+          submitText='Add Feedback'
+          formik={formikCreate}
         />
       )}
     </Box>
   );
 };
+
 export default FeedbackPage;

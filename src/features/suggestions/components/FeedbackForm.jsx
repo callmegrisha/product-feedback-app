@@ -11,15 +11,21 @@ import {
 import { BlockWrapper } from '../../../UI/BlockWrapper/BlockWrapper';
 
 const categories = [
-  { value: 'All', name: 'All' },
+  { value: 'all', name: 'All' },
   { value: 'UI', name: 'UI' },
   { value: 'UX', name: 'UX' },
-  { value: 'Enhancement', name: 'Enhancement' },
-  { value: 'Bug', name: 'Bug' },
-  { value: 'Feature', name: 'Feature' },
+  { value: 'enhancement', name: 'Enhancement' },
+  { value: 'bug', name: 'Bug' },
+  { value: 'feature', name: 'Feature' },
 ];
 
-export const FeedbackForm = ({ formik, isEdit, title }) => {
+const statuses = [
+  { value: 'in-progress', name: 'In Progress' },
+  { value: 'planned', name: 'Planned' },
+  { value: 'live', name: 'Live' },
+];
+
+export const FeedbackForm = ({ formik, isEdit, title, submitText }) => {
   return (
     <BlockWrapper
       title={title}
@@ -72,6 +78,27 @@ export const FeedbackForm = ({ formik, isEdit, title }) => {
             ))}
           </Select>
         </FormControl>
+        {isEdit && (
+          <FormControl mb={6}>
+            <FormLabel className='label'>Update Status</FormLabel>
+            <FormHelperText className='label-description'>
+              Change feedback state
+            </FormHelperText>
+            <Select
+              variant='purple'
+              name='status'
+              onChange={formik.handleChange}
+              value={formik.values.status}
+            >
+              <option>Choose status</option>
+              {statuses.map((status) => (
+                <option value={status.value} key={status.value}>
+                  {status.name}
+                </option>
+              ))}
+            </Select>
+          </FormControl>
+        )}
         <FormControl mb={8}>
           <FormLabel className='label'>Feedback Detail</FormLabel>
           <FormHelperText className='label-description'>
@@ -86,11 +113,16 @@ export const FeedbackForm = ({ formik, isEdit, title }) => {
           />
         </FormControl>
         <Flex alignItems='center' justifyContent='flex-end'>
-          <Button variant='grey' mr={4} maxWidth={93}>
+          {isEdit && (
+            <Button type='button' variant='red' maxWidth={93} mr='auto'>
+              Delete
+            </Button>
+          )}
+          <Button type='button' variant='grey' mr={4} maxWidth={93}>
             Cancel
           </Button>
           <Button type='submit' variant='purple' maxWidth={144}>
-            Add Feedback
+            {submitText}
           </Button>
         </Flex>
       </form>
