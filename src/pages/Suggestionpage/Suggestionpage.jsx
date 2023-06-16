@@ -22,27 +22,27 @@ const SuggestionPage = () => {
   const navigate = useNavigate();
   const { currentSuggestion } = useOneSuggestion();
 
-  if (!currentSuggestion) return <Heading as='h1'>Loading...</Heading>;
+  if (!currentSuggestion) return <Heading as="h1">Loading...</Heading>;
 
   return (
-    <Box as='section' p='80px 0 129px'>
+    <Box as="section" p="80px 0 129px">
       <Container maxW={762}>
-        <Flex as='header' align='center' justify='space-between' mb={6}>
+        <Flex as="header" align="center" justify="space-between" mb={6}>
           <Button
             __css={{}}
-            type='button'
-            display='flex'
-            alignItems='center'
+            type="button"
+            display="flex"
+            alignItems="center"
             onClick={() => navigate(-1)}
           >
             <Icon as={MdKeyboardArrowLeft} mr={3} />
-            <Text as='span' textStyle='h4' color='custom.lynch'>
+            <Text as="span" textStyle="h4" color="custom.lynch">
               Go Back
             </Text>
           </Button>
           <ChakraLink
             as={Link}
-            textStyle='h4'
+            textStyle="h4"
             to={`/suggestion/${currentSuggestion.id}/edit`}
             {...editFeedback}
           >

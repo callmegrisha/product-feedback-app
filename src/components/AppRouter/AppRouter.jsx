@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react';
 
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const SuggestionPage = lazy(() => import('../../pages/SuggestionPage'));
-const FeedbackPage = lazy(() => import('../../pages/FeedbackPage'));
+const FeedbackPage = lazy(() => import('../../pages/SuggestionPage'));
 
 export const AppRouter = () => {
   return (
@@ -17,7 +17,7 @@ export const AppRouter = () => {
         }
       />
       <Route
-        path='/suggestion/:id'
+        path="/suggestion/:id"
         element={
           <Suspense>
             <SuggestionPage />
@@ -25,7 +25,7 @@ export const AppRouter = () => {
         }
       />
       <Route
-        path='/suggestion/new'
+        path="/suggestion/new"
         element={
           <Suspense>
             <FeedbackPage />
@@ -33,7 +33,7 @@ export const AppRouter = () => {
         }
       />
       <Route
-        path='/suggestion/:id/edit'
+        path="/suggestion/:id/edit"
         element={
           <Suspense>
             <FeedbackPage isEdit />
