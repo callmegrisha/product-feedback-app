@@ -12,31 +12,31 @@ const FeedbackPage = ({ isEdit }) => {
   const { formik: formikEdit } = useEditSuggestion();
 
   return (
-    <Box as='section' padding='92px 24px' maxW={540} m='0 auto'>
+    <Box as="section" padding="92px 24px" maxW={540} m="0 auto">
       <Button
         __css={{}}
-        type='button'
-        display='flex'
-        alignItems='center'
+        type="button"
+        display="flex"
+        alignItems="center"
         mb={68}
         onClick={() => navigate(-1)}
       >
         <Icon as={MdKeyboardArrowLeft} mr={3} />
-        <Text as='span' textStyle='h4' color='custom.lynch'>
+        <Text as="span" textStyle="h4" color="custom.lynch">
           Go Back
         </Text>
       </Button>
       {isEdit ? (
         <FeedbackForm
           isEdit
-          title='Edit Feedback'
-          submitText='Save Feedback'
+          title="Edit Feedback"
+          submitText="Save Feedback"
           formik={formikEdit}
         />
       ) : (
         <FeedbackForm
-          title='Create New Feedback'
-          submitText='Add Feedback'
+          title="Create New Feedback"
+          submitText="Add Feedback"
           formik={formikCreate}
         />
       )}

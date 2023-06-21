@@ -12,14 +12,14 @@ export const Controls = ({ ...props }) => {
 
   return (
     <Flex {...styles} {...props}>
-      <Flex align='center' mr={38} {...quantity}>
-        <Image src={bulb} alt='bulb icon' mr={4} />
-        <Text as='span' textStyle='h3' color='white'>
+      <Flex align="center" mr={38} {...quantity}>
+        <Image src={bulb} alt="bulb icon" mr={4} />
+        <Text as="span" textStyle="h3" color="white">
           {entities.length || 0} Suggestions
         </Text>
       </Flex>
       <ControlsSort />
-      <Button as={Link} to='/suggestion/new' variant='purple' ml='auto'>
+      <Button as={Link} to="/suggestion/new" variant="purple" ml="auto">
         + Add FeedBack
       </Button>
     </Flex>

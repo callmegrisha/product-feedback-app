@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react';
 
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const SuggestionPage = lazy(() => import('../../pages/SuggestionPage'));
-const FeedbackPage = lazy(() => import('../../pages/SuggestionPage'));
+const FeedbackPage = lazy(() => import('../../pages/FeedbackPage'));
 
 export const AppRouter = () => {
   return (
