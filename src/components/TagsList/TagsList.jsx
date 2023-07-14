@@ -3,12 +3,12 @@ import { BaseTag } from '../../UI/BaseTag';
 import { tagsList } from './styles';
 
 const tags = [
-  { id: 0, name: 'All' },
-  { id: 1, name: 'UI' },
-  { id: 2, name: 'UX' },
-  { id: 3, name: 'Enhancement' },
-  { id: 4, name: 'Bug' },
-  { id: 5, name: 'Feature' },
+  { id: 0, name: 'All', clickable: true },
+  { id: 1, name: 'UI', clickable: true },
+  { id: 2, name: 'UX', clickable: true },
+  { id: 3, name: 'Enhancement', clickable: true },
+  { id: 4, name: 'Bug', clickable: true },
+  { id: 5, name: 'Feature', clickable: true },
 ];
 
 export const TagsList = () => {
@@ -16,7 +16,7 @@ export const TagsList = () => {
     <List {...tagsList}>
       {tags.map((tag) => (
         <ListItem key={tag.id}>
-          <BaseTag text={tag.name} />
+          <BaseTag text={tag.name} clickable={tag.clickable} />
         </ListItem>
       ))}
     </List>

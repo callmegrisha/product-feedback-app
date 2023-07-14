@@ -1,11 +1,11 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Flex, Image, Text } from '@chakra-ui/react';
-import { styles, quantity } from './styles';
 
-import bulb from '../../assets/suggestions/icon-suggestions.svg';
-import { useSelector } from 'react-redux';
-import { selectSuggestionsInfo } from '../../features/suggestions/suggestionsSlice';
 import { ControlsSort } from '../ControlsSort';
+import { selectSuggestionsInfo } from '../../features/suggestions/suggestionsSlice';
+import bulb from '../../assets/suggestions/icon-suggestions.svg';
+import { styles, quantity } from './styles';
 
 export const Controls = ({ ...props }) => {
   const { entities } = useSelector(selectSuggestionsInfo);

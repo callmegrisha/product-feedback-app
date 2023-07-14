@@ -4,6 +4,7 @@ import { Suspense, lazy } from 'react';
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const SuggestionPage = lazy(() => import('../../pages/SuggestionPage'));
 const FeedbackPage = lazy(() => import('../../pages/FeedbackPage'));
+const RoadmapPage = lazy(() => import('../../pages/RoadmapPage'));
 
 export const AppRouter = () => {
   return (
@@ -37,6 +38,14 @@ export const AppRouter = () => {
         element={
           <Suspense>
             <FeedbackPage isEdit />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/roadmap"
+        element={
+          <Suspense>
+            <RoadmapPage />
           </Suspense>
         }
       />

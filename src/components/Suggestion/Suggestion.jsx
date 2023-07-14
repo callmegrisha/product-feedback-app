@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Box, Button, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import { IoIosArrowUp } from 'react-icons/io';
-import { FaComment } from 'react-icons/fa';
 
 import { BlockWrapper } from '../../UI/BlockWrapper/BlockWrapper';
 import {
   suggestionCat,
-  suggestionComments,
+  suggestionCommentsLength,
   suggestionText,
   suggestionWrap,
   upvote,
   upvoteBtn,
 } from './styles';
+import { CommentsLength } from '../../UI/CommentsLength/CommentsLength';
 
 export const Suggestion = ({
   id,
@@ -51,17 +51,10 @@ export const Suggestion = ({
             {category[0].toUpperCase() + category.substring(1)}
           </Tag>
         </Box>
-        <Flex {...suggestionComments}>
-          <Icon as={FaComment} mr={2} color='#cdd2ee' />
-          <Text
-            as='span'
-            fontWeight='700'
-            textStyle='lgBody'
-            color='custom.eastBay'
-          >
-            {comments ? comments.length : <Text opacity='0.5'>0</Text>}
-          </Text>
-        </Flex>
+        <CommentsLength
+          comments={comments}
+          additionalStyles={suggestionCommentsLength}
+        />
       </Flex>
     </BlockWrapper>
   );

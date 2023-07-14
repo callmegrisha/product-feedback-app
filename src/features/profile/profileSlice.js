@@ -4,7 +4,7 @@ export const getCurrentProfile = createAsyncThunk(
   '@@profile/getCurrentProfile',
   async (_, { extra: { client }, rejectWithValue }) => {
     try {
-      const { data } = await client.get('http://localhost:3000/currentUser');
+      const { data } = await client.get('http://localhost:3001/currentUser');
 
       return data;
     } catch (error) {

@@ -1,40 +1,51 @@
-import { Flex, List, ListIcon, ListItem, Text } from '@chakra-ui/react';
-import { BsFillCircleFill } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
+import { Flex, List, ListItem, Text } from '@chakra-ui/react';
 
+import { 
+  selectInProgressSuggestions,
+  selectLiveSuggestions,
+  selectPlannedSuggestions
+} from '../../features/suggestions/suggestionsSlice';
+import { ColoredDotPhrase } from '../../UI/ColoredDotPhrase';
 import { listItem, quantity } from './styles';
 
 export const RoadmapList = () => {
+  const planned = useSelector(selectPlannedSuggestions);
+  const inProgress = useSelector(selectInProgressSuggestions);
+  const live = useSelector(selectLiveSuggestions);
+
   return (
     <List spacing={2}>
       <ListItem {...listItem}>
         <Flex align='center'>
-          <ListIcon as={BsFillCircleFill} mr={4} w={2} color='custom.tacao' />
-          <Text as='span'>Planned</Text>
-          <Text as='span' {...quantity}>
-            2
-          </Text>
-        </Flex>
-      </ListItem>
-      <ListItem {...listItem}>
-        <Flex align='center'>
-          <ListIcon
-            as={BsFillCircleFill}
-            mr={4}
-            w={2}
-            color='custom.cornflowerBlue'
+          <ColoredDotPhrase
+            color='custom.tacao'
+            text='Planned'
           />
-          <Text as='span'>In-Progress</Text>
           <Text as='span' {...quantity}>
-            3
+            {planned.length}
           </Text>
         </Flex>
       </ListItem>
       <ListItem {...listItem}>
         <Flex align='center'>
-          <ListIcon as={BsFillCircleFill} mr={4} w={2} color='custom.malibu' />
-          <Text as='span'>Live</Text>
+          <ColoredDotPhrase
+            color='custom.cornflowerBlue'
+            text='In-Progress'
+          />
           <Text as='span' {...quantity}>
-            1
+            {inProgress.length}
+          </Text>
+        </Flex>
+      </ListItem>
+      <ListItem {...listItem}>
+        <Flex align='center'>
+          <ColoredDotPhrase
+            color='custom.malibu'
+            text='Live'
+          />
+          <Text as='span' {...quantity}>
+            {live.length}
           </Text>
         </Flex>
       </ListItem>

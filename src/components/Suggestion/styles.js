@@ -19,12 +19,11 @@ export const suggestionText = {
   marginBottom: ['16px', '16px', 0, 0],
 };
 
-export const suggestionComments = {
-  alignItems: 'center',
+export const suggestionCommentsLength = {
   justifyContent: ['flex-end', 'flex-end', 'flex-start', 'flex-start'],
-  marginLeft: [0, 0, 'auto', 'auto'],
   order: ['1', '1', '0', '0'],
   flexBasis: ['50%', '50%', 'auto', 'auto'],
+  marginLeft: [0, 0, 'auto', 'auto'],
 };
 
 export const suggestionCat = {

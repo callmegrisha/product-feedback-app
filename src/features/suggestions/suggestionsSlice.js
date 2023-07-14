@@ -5,7 +5,7 @@ export const getAllSuggestions = createAsyncThunk(
   async (_, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.get(
-        'http://localhost:3000/productRequests'
+        'http://localhost:3001/productRequests'
       );
 
       return data;
@@ -20,7 +20,7 @@ export const getSuggestionByCategory = createAsyncThunk(
   async (category, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.get(
-        `http://localhost:3000/productRequests?category=${category.toLowerCase()}`
+        `http://localhost:3001/productRequests?category=${category.toLowerCase()}`
       );
 
       return data;
@@ -35,7 +35,7 @@ export const getOneSuggestion = createAsyncThunk(
   async (id, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.get(
-        `http://localhost:3000/productRequests/${id}`
+        `http://localhost:3001/productRequests/${id}`
       );
 
       return data;
@@ -50,7 +50,7 @@ export const createSuggestion = createAsyncThunk(
   async (suggestionObj, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.post(
-        'http://localhost:3000/productRequests',
+        'http://localhost:3001/productRequests',
         suggestionObj
       );
 
@@ -66,7 +66,7 @@ export const updateSuggestion = createAsyncThunk(
   async ({ id, suggestionObj }, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.patch(
-        `http://localhost:3000/productRequests/${id}`,
+        `http://localhost:3001/productRequests/${id}`,
         suggestionObj
       );
 
@@ -82,7 +82,7 @@ export const deleteSuggestion = createAsyncThunk(
   async (id, { extra: { client }, rejectWithValue }) => {
     try {
       const { data } = await client.delete(
-        `http://localhost:3000/productRequests/${id}`
+        `http://localhost:3001/productRequests/${id}`
       );
 
       return data;
@@ -207,5 +207,11 @@ export const suggestionsReducer = suggestionsSlice.reducer;
 
 // selectors
 export const selectSuggestionsInfo = (state) => state.suggestions;
+export const selectPlannedSuggestions = (state) =>
+  state.suggestions.entities.filter(suggestion => suggestion.status === 'planned');
+export const selectInProgressSuggestions = (state) =>
+  state.suggestions.entities.filter(suggestion => suggestion.status === 'in-progress');
+export const selectLiveSuggestions = (state) => 
+  state.suggestions.entities.filter(suggestion => suggestion.status === 'live');
 export const selectCurrentSuggestion = (state) =>
   state.suggestions.currentSuggestion;

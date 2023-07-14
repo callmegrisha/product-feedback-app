@@ -43,6 +43,7 @@ export const useEditSuggestion = () => {
         status: currentSuggestion.status,
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSuggestion]);
 
   return { formik };

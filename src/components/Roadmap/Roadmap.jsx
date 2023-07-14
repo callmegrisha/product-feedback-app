@@ -1,6 +1,8 @@
+import { Link as RouterLink } from 'react-router-dom';
 import { Box, Flex, Link, Text } from '@chakra-ui/react';
-import { roadmap, viewAll } from './styles';
+
 import { RoadmapList } from '../RoadmapList/RoadmapList';
+import { roadmap, viewAll } from './styles';
 
 export const Roadmap = () => {
   return (
@@ -9,7 +11,7 @@ export const Roadmap = () => {
         <Text textStyle='h3' color='custom.eastBay'>
           Roadmap
         </Text>
-        <Link href='/' className='view-all' {...viewAll}>
+        <Link as={RouterLink} to='/roadmap' className='view-all' {...viewAll}>
           View
         </Link>
       </Flex>
